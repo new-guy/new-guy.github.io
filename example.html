@@ -14,8 +14,8 @@
             function new_new_guy() {
                 console.log('actually rex rules suckaaaaa')
             }
-            
-            function bobbys_function() {
+
+            function Bobbys_function() {
                 console.log('n3rd sh17.')
             }
 
@@ -25,6 +25,52 @@
                     .then(json => console.log(json))
             }
 
+            function dave_test_oauth() {
+                fetch('https://www.bungie.net/Platform/User/GetBungieNetUserById/28008074/', {
+                    mode: 'no-cors',
+                    headers: {
+                        'X-API-Key': '2c5838c83394428ab1c7dbbe7250fb64'
+                    }
+                })
+                    .then(response => response.json())
+                    .then(json => console.log(json))
+            }
+
+            function sanity_test_api() {
+                var apiKey = "2c5838c83394428ab1c7dbbe7250fb64";
+
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/1274330687/", true);
+                xhr.setRequestHeader("X-API-Key", apiKey);
+
+                xhr.onreadystatechange = function(){
+                    if(this.readyState === 4 && this.status === 200){
+                        var json = JSON.parse(this.responseText);
+                        console.log(json.Response.data.inventoryItem.itemName); //Gjallarhorn
+                    }
+                }
+
+                xhr.send();
+            }
         </script>
     </body>
 </html>
+
+<!--
+
+    fetch(url, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+  });
+
+
+-->
